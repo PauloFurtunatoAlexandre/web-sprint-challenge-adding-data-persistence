@@ -16,4 +16,17 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.post("/", async (req, res) => {
+    const newResource = req.body;
+    try {
+        const resource = await Resources.addResources(newResource).then(
+            (item) => {
+                res.status(201).json(item);
+            }
+        );
+    } catch {
+        res.status(500).json({ message: "Could not create the resource." });
+    }
+});
+
 module.exports = router;

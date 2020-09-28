@@ -10,10 +10,15 @@ function getTasks() {
             "tasks.description as Task Description",
             "tasks.notes",
             "tasks.completed",
-            "tasks.project_id",
+            "tasks.project_id"
         );
+}
+
+function addTasks(task) {
+    return db("tasks").insert(task);
 }
 
 module.exports = {
     getTasks,
+    addTasks,
 };
