@@ -6,7 +6,7 @@ const Resources = require("./resourcesDB.js");
 
 router.get("/", async (req, res) => {
     try {
-        const resources = await Resources.getResources("resources").then(
+        await Resources.getResources("resources").then(
             (resources) => {
                 res.status(200).json(resources);
             }
@@ -17,9 +17,9 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const newResource = req.body;
+    const item = req.body;
     try {
-        const resource = await Resources.addResources(newResource).then(
+        await Resources.addResources(item).then(
             (item) => {
                 res.status(201).json(item);
             }
